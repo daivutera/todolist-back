@@ -1,6 +1,7 @@
 const { SuccessCase, ErrorCase } = require('../helpers/helpers');
 const bcrypt = require('bcryptjs');
 const { userRegisterDb, userLoginDb } = require('../models/authModel');
+const { generateJwtToken } = require('../middleware/tokenValidation');
 
 async function loginUser(req, res) {
   const { email, password } = req.body;
@@ -30,7 +31,7 @@ async function registerUser(req, res) {
   const user = await userRegisterDb(email, hashPassword);
   console.log('user', user);
   if (user.msg) {
-    ErrorCase(res, user.msg);
+    ErrorCase(res, user.msg, 400);
     return;
   }
   if (user === false) {

@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 require('dotenv').config();
 const authRouter = require('./routes/authRoutes');
+const postRouter = require('./routes/postRoutes');
 const serverPort = process.env.SERVER_PORT;
 
 const app = express();
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth/', authRouter);
+app.use('/', postRouter);
 
 app.all('*', (req, res) => {
   return res.status(404).send({ err: 'Page not found' });

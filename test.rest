@@ -1,9 +1,24 @@
 http://localhost:3000/
 ###
 post http://localhost:3000/auth/login
+Content-Type: application/json
+
+{"email":"hello@helloo.lt",
+"password":"hello"}
+
 ###
 post http://localhost:3000/auth/register
 Content-Type: application/json
 
 {"email":"hello@helloo.lt",
 "password":"hello"}
+###
+post http://localhost:3000/add-post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjUyNzkzOTEwLCJleHAiOjE2NTI3OTc1MTB9.G4SshiKcT0cjT0qv4BomEAGPPQvoRy-ZpjH8uAwQSmk
+
+{"description":"to walk a dog"}
+
+###
+http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjUyNzkzOTEwLCJleHAiOjE2NTI3OTc1MTB9.G4SshiKcT0cjT0qv4BomEAGPPQvoRy-ZpjH8uAwQSmk

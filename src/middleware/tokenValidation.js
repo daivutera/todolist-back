@@ -23,6 +23,7 @@ function validateToken(req, res, next) {
 
   const verifyData = verifyJwtToken(tokenGotFromUser);
   if (verifyData === false) return ErrorCase(res, 'invalid token', 403);
+  req.userId = verifyData.id;
   next();
 }
 

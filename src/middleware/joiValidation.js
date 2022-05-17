@@ -20,5 +20,22 @@ async function validation(req, res, next) {
     res.status(400).json({ formatedError, success: false });
   }
 }
+async function validationTodos(req, res, next) {
+  const schema = Joi.object({
+    description: Joi.string().min(4).max(200).required(),
+  });
+  try {
+    await schema.validateAsync(req.body, { abortEarly: false });
+    next();
+  } catch (error) {
+    console.log(error, 'error from Joi validation');
+    const foratedError = error.details.map((detail) => ({
+      field: detail.context.key,
+      message: detail.message,
+      success: false,
+    }));
+    res.status(400).json({ formatedError, success: false });
+  }
+}
 
-module.exports = validation;
+module.exports = { validation, validationTodos };

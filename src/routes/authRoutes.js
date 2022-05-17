@@ -1,6 +1,6 @@
 const express = require('express');
 const authRouter = express.Router();
-const validation = require('../middleware/jwtValidation');
+const { validation } = require('../middleware/joiValidation');
 const authController = require('../controllers/authController');
 
 authRouter.post('/login', validation, authController.loginUser);
