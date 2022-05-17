@@ -1,0 +1,9 @@
+http://localhost:3000/
+###
+post http://localhost:3000/auth/login
+###
+post http://localhost:3000/auth/register
+Content-Type: application/json
+
+{"email":"hello@helloo.lt",
+"password":"hello"}
