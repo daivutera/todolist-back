@@ -29,7 +29,10 @@ async function registerUser(req, res) {
   const hashPassword = bcrypt.hashSync(password, 10);
   const user = await userRegisterDb(email, hashPassword);
   console.log('user', user);
-
+  if (user.msg) {
+    ErrorCase(res, user.msg);
+    return;
+  }
   if (user === false) {
     ErrorCase(res);
     return;
