@@ -4,7 +4,7 @@
   "description": "todolist",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "node src/index.js"
   },
   "author": "daiva",
   "license": "ISC",
